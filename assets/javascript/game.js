@@ -5,6 +5,9 @@ $(document).on("click","#searchBtn", function() {
     var location = $("#location").val().trim();
     var radius = $("#radius").val().trim();
 
+    var geoCoordArray = [];
+
+
     var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
 
     $.ajax({
@@ -18,9 +21,9 @@ $(document).on("click","#searchBtn", function() {
         
         for (var i = 0; i < results.length; i++) {
 
-            $("#object").append(response.events[i].venue_id);
-            $("#object").append(response.events[i].description.text);
-            $("#object").append(response.events[i].url);
+            // $("#object").append(response.events[i].venue_id);
+            // $("#object").append(response.events[i].description.text);
+            // $("#object").append(response.events[i].url);
 
             var venueID = response.events[i].venue_id;
             var venuesQueryURL = 'https://www.eventbriteapi.com/v3/venues/' + venueID + '/?token=NFYIPZGRL3ENLJ7TMLZJ';
@@ -34,13 +37,14 @@ $(document).on("click","#searchBtn", function() {
                 var latitude = response.address.latitude;
                 var longitude = response.address.longitude;
 
-                $("#addresses").append(venueAddress);
-
-                console.log(venueAddress);
-                
-            })
+                // $("#addresses").append(venueAddress);
+                geoCoordArray.push({lat:latitude , lng:longitude});
+               
+})
 
         }
 
     });
+
+    console.log(geoCoordArray);
 });
