@@ -1,4 +1,4 @@
-var geoCoordArray = [];
+var locations = [];
 $(document).on("click","#searchBtn", function() {
           event.preventDefault();
       
@@ -36,8 +36,8 @@ $(document).on("click","#searchBtn", function() {
                       var longitude = response.address.longitude;
       
                       // $("#addresses").append(venueAddress);
-                      geoCoordArray.push([latitude , longitude]);
-                      console.log(geoCoordArray);
+                      locations.push([latitude , longitude]);
+                      console.log(locations);
 
                   })
       
@@ -52,25 +52,27 @@ $(document).on("click","#searchBtn", function() {
         var losAngeles = {lat: 34.0522, lng: -118.2437};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
-            center: losAngeles
+            center: losAngeles,
         });
-    
+        setMarkers(map);
+    }
         // var contentString  = /*Insert box content*/;
           
-        var infowindow = new google.maps.InfoWindow({
-          // content: contentString,
-          maxWidth: 350
-        });
-        
-        var marker;
-        for (var i = 0; i < geoCoordArray.length; i++) {
-          marker = new google.maps.Marker({
-          position: new google.maps.LatLng(geoCoordArray[i][0], geoCoordArray[i][1]),
-          map: map,
-          
-          });
-          console.log(marker)
+        // var infowindow = new google.maps.InfoWindow({
+        //   // content: contentString,
+        //   maxWidth: 350
+        // });
+        function setMarkers(map) {
+            var marker, i;
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                map: map
+                });
+                console.log(marker)
+            }    
         }
+        
         
         // marker.addListener('mouseover', function() {
         //   infowindow.open(map, marker);
@@ -78,4 +80,6 @@ $(document).on("click","#searchBtn", function() {
         // marker.addListener('mouseout', function() {
         //   infowindow.close();
         // });
-      }
+      
+
+      
