@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Info window with <code>maxWidth</code></title>
+    <title></title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -17,52 +17,36 @@
         padding: 0;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRKE7aBhitL_SkGByrFo-9V9ZVEiZW2io&callback=initMap"></script>
+    <script src = 'assets/javascript/game.js'></script>
   </head>
   <body>
-    <div id="map"></div>
-    <script>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div id="object">
+    
+                </div>
+            </div>
+            <div class="row">
+                <div id="addresses">
+    
+                </div>
+            </div>
+                <div class="form-group">
+                    <label for="searchInput">Search Any Topic</label>
+                    <input type="text" class="form-control" id="searchInput">
+                    <label for="location">Address</label>
+                    <input type="text" class="form-control" id="location">
+                    <label for="radius">Radius</label>
+                    <input type="text" class="form-control" id="radius">
+                    <button type="submit" id="searchBtn" class="btn btn-dark">Submit</button>
+                </div> 
+            
+    
+        </div>
 
-      // This example displays a marker at the center of Australia.
-      // When the user clicks the marker, an info window opens.
-      // The maximum width of the info window is set to 200 pixels.
-
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        // var sydney = {lat : -33.8688, lng : 151.2093}
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
-          center: uluru
-        });
-
-        // var contentString  = /*Insert box content*/;
-          
-        var infowindow = new google.maps.InfoWindow({
-          // content: contentString,
-          maxWidth: 350
-        });
-        var locations = [
-          [-33.8688, 151.2093],
-          [-25.3444, 131.0369]  
-        ]
-        var marker, i;
-        for (var i = 0; i < locations.length; i++) {
-          marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-          map: map,
-          
-          });
-        }
-        
-        // marker.addListener('mouseover', function() {
-        //   infowindow.open(map, marker);
-        // });
-        // marker.addListener('mouseout', function() {
-        //   infowindow.close();
-        // });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRKE7aBhitL_SkGByrFo-9V9ZVEiZW2io&callback=initMap">
-    </script>
+        <div id = 'map'></div>
   </body>
 </html>
