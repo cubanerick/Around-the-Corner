@@ -1,12 +1,12 @@
+var geoCoordArray = [];
+
+
 $(document).on("click","#searchBtn", function() {
     event.preventDefault();
 
     var searchInput = $("#searchInput").val().trim();
     var location = $("#location").val().trim();
     var radius = $("#radius").val().trim();
-
-    var geoCoordArray = [];
-
 
     var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
 
@@ -38,9 +38,9 @@ $(document).on("click","#searchBtn", function() {
                 var longitude = response.address.longitude;
 
                 // $("#addresses").append(venueAddress);
-                geoCoordArray.push({lat:latitude , lng:longitude});
+                geoCoordArray.push([latitude , longitude]);
                
-})
+            })
 
         }
 
