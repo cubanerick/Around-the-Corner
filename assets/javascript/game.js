@@ -1,5 +1,6 @@
 var locations = [{lat: 34.1425, lng: -118.2551},{lat: 34.1808, lng: -118.3090},{lat: 34.1478, lng: -118.1445}];
 var map;
+var status = "x";
 
 function initMap() {
     var losAngeles = {lat: 34.0522, lng: -118.2437};
@@ -8,13 +9,14 @@ function initMap() {
         center: losAngeles,
     });
 
-    
-    for (var i = 0; i < locations.length; i++) {
-        var marker = new google.maps.Marker({
-            position: locations[i],
-            map: map
-        });
-    }   
+    // if (status === "ok") {
+        for (var i = 0; i < locations.length; i++) {
+            var marker = new google.maps.Marker({
+                position: locations[i],
+                map: map
+            });
+        }
+    // }
 }
 
 $(document).on("click","#searchBtn", function() {
@@ -58,18 +60,8 @@ $(document).on("click","#searchBtn", function() {
                 locations.push({lat: parseFloat(latitude), lng: parseFloat(longitude)});
             })
       
-        } 
-        
-        window.eqfeed_callback = function(results) {
-
-            for (var i = 0; i < locations.length; i++) {
-               var marker = new google.maps.Marker({
-                   position: locations[i],
-                   map: map
-                });
-            }
-        }
-        
+        }    
     }); 
+    status = "ok";
     console.log(locations); 
 });
