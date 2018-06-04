@@ -1,16 +1,15 @@
 var locations = [];
 var text = [] // this needs to be changed to be dynamically filled from AJAX calls
-var bool = false;
 
 $(document).on("click", "#searchBtn", function () {
     // event.preventDefault();
-    
     getInfo();
-    
-    window.location.href = "map.html";
-
-    // console.log(locations); 
+    setTimeout(sendtoMap, 3000);
 });
+
+function sendtoMap() {
+    window.location.href = "map.html"
+}
 
 
 function getInfo() {
