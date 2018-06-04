@@ -1,7 +1,7 @@
 var locations = [];
 $(document).on("click","#searchBtn", function() {
           event.preventDefault();
-      
+          locations = [];
           var searchInput = $("#searchInput").val().trim();
           var location = $("#location").val().trim();
           var radius = $("#radius").val().trim();
@@ -38,12 +38,12 @@ $(document).on("click","#searchBtn", function() {
                       // $("#addresses").append(venueAddress);
                       locations.push([latitude , longitude]);
                       console.log(locations);
-
                   })
       
               }
       
           });
+          setMarkers(map)
       
       });
 
@@ -63,13 +63,12 @@ $(document).on("click","#searchBtn", function() {
         //   maxWidth: 350
         // });
         function setMarkers(map) {
-            var marker, i;
+            var marker;
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                 map: map
                 });
-                console.log(marker)
             }    
         }
         
