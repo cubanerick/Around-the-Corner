@@ -1,7 +1,19 @@
 var locations = [];
+var text = [] // this needs to be changed to be dynamically filled from AJAX calls
+var bool = false;
 
 $(document).on("click", "#searchBtn", function () {
     // event.preventDefault();
+    
+    getInfo();
+    
+    window.location.href = "map.html";
+
+    // console.log(locations); 
+});
+
+
+function getInfo() {
     localStorage.clear
     var searchInput = $("#searchInput").val().trim();
     var location = $("#location").val().trim();
@@ -13,13 +25,14 @@ $(document).on("click", "#searchBtn", function () {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
+        console.log(response)
 
 
         var results = response.events;
 
         for (var i = 0; i < results.length; i++) {
 
+            // text.push();
             // $("#object").append(response.events[i].venue_id);
             // $("#object").append(response.events[i].description.text);
             // $("#object").append(response.events[i].url);
@@ -39,13 +52,13 @@ $(document).on("click", "#searchBtn", function () {
                 // $("#addresses").append(venueAddress);
                 // locations.empty();
                 locations.push([parseFloat(latitude), parseFloat(longitude)]);
+                localStorage.setItem("locations", JSON.stringify(locations));
                 // localStorage.setItem("location" + i ,"{lat: " + latitude + ", lng: " + longitude + "}")
 
                 // locations.push(localStorage.getItem("location" + i))
             })
 
-            localStorage.setItem("locations", JSON.stringify(locations));
+            // localStorage.setItem("locations", JSON.stringify(locations));
         }
     });
-    // console.log(locations); 
-});
+}

@@ -1,7 +1,7 @@
 var map, marker;
 
 function initMap() {
-    var text = ['1', '2', '3', '4', '5', '6', '7', '8'] // this needs to be changed to be dynamically filled from AJAX calls
+
     var losAngeles = {
         lat: 34.0522,
         lng: -118.2437
