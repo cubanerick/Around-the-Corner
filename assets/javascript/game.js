@@ -1,5 +1,5 @@
 var locations = [];
-var map, marker;
+var map, marker, venueAddress, latitude, longitude;
 
 function initMap() {
     var losAngeles = {lat: 34.0522, lng: -118.2437};
@@ -51,14 +51,16 @@ $(document).on("click","#searchBtn", function() {
                 method : 'GET'
             }).then(function(response) {
                       
-                var venueAddress = response.address.localized_address_display;
-                var latitude = response.address.latitude;
-                var longitude = response.address.longitude;
+                venueAddress = response.address.localized_address_display;
+                latitude = response.address.latitude;
+                longitude = response.address.longitude;
       
                 locations.push([parseFloat(latitude),parseFloat(longitude)]);
             })
-            
-            localStorage.setItem("locations", JSON.stringify(locations));
-        }    
-    }); 
+
+            if(i === (results.length - 1)){
+                localStorage.setItem("locations", JSON.stringify(locations));
+            }
+        }   
+    });
 });
