@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Map</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+
+        #map {
+            height: 100%;
+            width : 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .infoImage {
+            height: 200px;
+            width:200px
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src='assets/javascript/map.js'></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRKE7aBhitL_SkGByrFo-9V9ZVEiZW2io&callback=initMap"></script>
+</head>
+<body>
+    <div id='map'></div>
+</body>
+</html>
