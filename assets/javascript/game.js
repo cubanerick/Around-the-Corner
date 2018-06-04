@@ -1,9 +1,13 @@
 var locations = [];
 var text = [] 
 
+
+
 $(document).on("click", "#searchBtn", function () {
     // event.preventDefault();
     getInfo();
+    $('.container').hide();
+    $('#loader').show();
     setTimeout(sendtoMap, 5000);
 });
 
@@ -16,7 +20,7 @@ function getInfo() {
     localStorage.clear
     var searchInput = $("#searchInput").val().trim();
     var location = $("#location").val().trim();
-    var radius = $("#radius").val().trim();
+    var radius = $("#radius").val();
 
     var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
 
@@ -31,7 +35,7 @@ function getInfo() {
 
         for (var i = 0; i < results.length; i++) {
             
-            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.text + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'/></img><p><a href ='" + response.events[i].url + "'/>Event Info</p></div>");
+            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.html + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'><p><a href =" + response.events[i].url + "/>Event Info</p></div>");
 
             localStorage.setItem('info', JSON.stringify(text));
             // text.push();
@@ -64,3 +68,6 @@ function getInfo() {
         }
     });
 }
+
+
+
