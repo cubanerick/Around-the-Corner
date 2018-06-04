@@ -1,41 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-    <script src="assets/javascript/game.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style> 
     
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div id="object">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src = 'assets/javascript/game.js'></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRKE7aBhitL_SkGByrFo-9V9ZVEiZW2io&callback=initMap"></script>
 
+  </head>
+  <body>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div id="object">
+    
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div id="addresses">
-
+            <div class="row">
+                <div id="addresses">
+    
+                </div>
             </div>
+                <div class="form-group">
+                    <label for="searchInput">Search Any Topic</label>
+                    <input type="text" class="form-control" id="searchInput">
+                    <label for="location">Address</label>
+                    <input type="text" class="form-control" id="location">
+                    <label for="radius">Radius</label>
+                    <input type="text" class="form-control" id="radius">
+                    <button type="submit" id="searchBtn" class="btn btn-dark">Submit</button>
+                </div> 
+            
+    
         </div>
-            <div class="form-group">
-                <label for="searchInput">Search Any Topic</label>
-                <input type="text" class="form-control" id="searchInput">
-                <label for="location">Address</label>
-                <input type="text" class="form-control" id="location">
-                <label for="radius">Radius</label>
-                <input type="text" class="form-control" id="radius">
-                <button type="submit" id="searchBtn" class="btn btn-dark">Submit</button>
-            </div> 
-        
 
-    </div>
-</body>
+        <div id = 'map'></div>
+  </body>
 </html>

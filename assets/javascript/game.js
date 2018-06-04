@@ -1,6 +1,5 @@
-var locations = [{lat: 34.1425, lng: -118.2551},{lat: 34.1808, lng: -118.3090},{lat: 34.1478, lng: -118.1445}];
-var map;
-var status = "x";
+var locations = [];
+var map, marker;
 
 function initMap() {
     var losAngeles = {lat: 34.0522, lng: -118.2437};
@@ -9,18 +8,24 @@ function initMap() {
         center: losAngeles,
     });
 
-    // if (status === "ok") {
-        for (var i = 0; i < locations.length; i++) {
-            var marker = new google.maps.Marker({
-                position: locations[i],
-                map: map
-            });
-        }
-    // }
+    var coords = localStorage.getItem("locations"); 
+    var json = JSON.parse(coords);
+
+    function addmarker(coord) {
+        marker = new google.maps.Marker({
+            position: coord,
+            map: map
+        });
+    }
+
+    for (var i = 0; i < json.length; i++) {
+        addmarker({lat:parseFloat(json[i][0]),lng:parseFloat(json[i][1])});
+    }
+    console.log(json);
 }
 
 $(document).on("click","#searchBtn", function() {
-    event.preventDefault();
+    // event.preventDefault();
       
     var searchInput = $("#searchInput").val().trim();
     var location = $("#location").val().trim();
@@ -32,16 +37,11 @@ $(document).on("click","#searchBtn", function() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log(response)
-              
+        // console.log(response)
               
         var results = response.events;
               
         for (var i = 0; i < results.length; i++) {
-      
-            // $("#object").append(response.events[i].venue_id);
-            // $("#object").append(response.events[i].description.text);
-            // $("#object").append(response.events[i].url);
       
             var venueID = response.events[i].venue_id;
             var venuesQueryURL = 'https://www.eventbriteapi.com/v3/venues/' + venueID + '/?token=NFYIPZGRL3ENLJ7TMLZJ';
@@ -55,13 +55,10 @@ $(document).on("click","#searchBtn", function() {
                 var latitude = response.address.latitude;
                 var longitude = response.address.longitude;
       
-                // $("#addresses").append(venueAddress);
-                // locations.empty();
-                locations.push({lat: parseFloat(latitude), lng: parseFloat(longitude)});
+                locations.push([parseFloat(latitude),parseFloat(longitude)]);
             })
-      
+            
+            localStorage.setItem("locations", JSON.stringify(locations));
         }    
     }); 
-    status = "ok";
-    console.log(locations); 
 });
