@@ -30,7 +30,7 @@ function getInfo() {
         var results = response.events;
 
         for (var i = 0; i < results.length; i++) {
-
+            // var content = ()
             // text.push();
             // $("#object").append(response.events[i].venue_id);
             // $("#object").append(response.events[i].description.text);
