@@ -6,7 +6,7 @@ var map, marker;
 // }
 
 function initMap() {
-    var text = ['1', '2', '3', '4', '5', '6', '7', '8']
+    var text = ['1', '2', '3', '4', '5', '6', '7', '8'] // this needs to be changed to be dynamically filled from AJAX calls
     var losAngeles = {
         lat: 34.0522,
         lng: -118.2437
@@ -42,7 +42,7 @@ function initMap() {
 
         google.maps.event.addListener(addmarker, 'click', (function (addmarker, i) {
             return function () {
-                infowindow.setContent(text[i]);
+                infowindow.setContent(text[i]); // text[i] needs to be a dynamically created array from AJAX call to correspond with each coordinate we pull
                 infowindow.open(map, addmarker);
             }
         })(addmarker, i));
