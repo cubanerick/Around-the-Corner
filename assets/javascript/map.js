@@ -13,6 +13,8 @@ function initMap() {
 
     var coords = localStorage.getItem("locations");
     var json = JSON.parse(coords);
+    var htmlText = localStorage.getItem("info");
+    var jsonEventData =JSON.parse(htmlText);
 
     // function addmarker(coord) {
     //     marker = new google.maps.Marker({
@@ -34,7 +36,7 @@ function initMap() {
 
         google.maps.event.addListener(addmarker, 'click', (function (addmarker, i) {
             return function () {
-                infowindow.setContent(text[i]); // text[i] needs to be a dynamically created array from AJAX call to correspond with each coordinate we pull
+                infowindow.setContent(jsonEventData[i]); // text[i] needs to be a dynamically created array from AJAX call to correspond with each coordinate we pull
                 infowindow.open(map, addmarker);
             }
         })(addmarker, i));

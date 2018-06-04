@@ -1,10 +1,10 @@
 var locations = [];
-var text = [] // this needs to be changed to be dynamically filled from AJAX calls
+var text = [] 
 
 $(document).on("click", "#searchBtn", function () {
     // event.preventDefault();
     getInfo();
-    setTimeout(sendtoMap, 3000);
+    setTimeout(sendtoMap, 5000);
 });
 
 function sendtoMap() {
@@ -30,8 +30,10 @@ function getInfo() {
         var results = response.events;
 
         for (var i = 0; i < results.length; i++) {
-            var infoWindow = text.push(response.events[i].description.html);
-            localStorage.setItem('info', infoWindow);
+            
+            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.text + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'/></img><p><a href ='" + response.events[i].url + "'/>Event Info</p></div>");
+
+            localStorage.setItem('info', JSON.stringify(text));
             // text.push();
             // $("#object").append(response.events[i].venue_id);
             // $("#object").append(response.events[i].description.text);
