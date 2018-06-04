@@ -28,8 +28,8 @@ function initMap() {
                 parseFloat(json[i][0]),
                 parseFloat(json[i][1])
             ),
-            map: map
-
+            map: map,
+            
         });
 
         google.maps.event.addListener(addmarker, 'click', (function (addmarker, i) {
