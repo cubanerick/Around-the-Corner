@@ -25,10 +25,7 @@ function initMap() {
     //         map: map,
     //     });
     // }
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-    var contentString = '<div id = "box">' + '<p>' + 'Test test TEST' + '</p>' + '</div>';
+    var infowindow = new google.maps.InfoWindow();
 
     for (var i = 0; i < json.length; i++) {
         var addmarker = new google.maps.Marker({
