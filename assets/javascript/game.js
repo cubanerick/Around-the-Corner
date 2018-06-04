@@ -30,7 +30,8 @@ function getInfo() {
         var results = response.events;
 
         for (var i = 0; i < results.length; i++) {
-            // var content = ()
+            var infoWindow = text.push(response.events[i].description.html);
+            localStorage.setItem('info', infoWindow);
             // text.push();
             // $("#object").append(response.events[i].venue_id);
             // $("#object").append(response.events[i].description.text);
