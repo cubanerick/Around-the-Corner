@@ -32,7 +32,7 @@ function getInfo() {
 
 
         var results = response.events;
-
+        console.log(results)
         for (var i = 0; i < results.length; i++) {
             
             text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.html + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'><br><a href =" + response.events[i].url + "target='_blank'>Event Info</a></div>");
