@@ -1,15 +1,22 @@
 var map, marker;
 
 function initMap() {
+    
+    var uP = localStorage.getItem("userPosition");
+    var jsonUserPosition = JSON.parse(uP);
+    console.log(jsonUserPosition);
 
-    var losAngeles = {
-        lat: 34.0522,
-        lng: -118.2437
+    var userPosition = {
+        lat: parseFloat(jsonUserPosition[0]),
+        lng: parseFloat(jsonUserPosition[1])
     };
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        center: losAngeles,
+        center: userPosition,
     });
+
+    console.log(userPosition);
 
     var coords = localStorage.getItem("locations");
     var json = JSON.parse(coords);
@@ -19,7 +26,7 @@ function initMap() {
     // function addmarker(coord) {
     //     marker = new google.maps.Marker({
     //         position: coord,
-    //         map: map,
+    //         map: map,2
     //     });
     // }
     var infowindow = new google.maps.InfoWindow();
@@ -47,10 +54,3 @@ function initMap() {
 $(document).on('click','#searchPageButton', function() {
     window.location.href = 'index.html';
 })
-
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-}
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-}

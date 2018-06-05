@@ -1,18 +1,26 @@
 var locations = [];
 var text = [] 
+var userPosition;
 
-
+getGeolocation();
 
 $(document).on("click", "#searchBtn", function () {
     // event.preventDefault();
     getInfo();
     $('.container').hide();
     $('#loader').show();
+    localStorage.setItem("userPosition", JSON.stringify(userPosition));
     setTimeout(sendtoMap, 5000);
 });
 
+function getGeolocation() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        userPosition = [position.coords.latitude, position.coords.longitude]
+    });
+}
+
 function sendtoMap() {
-    window.location.href = "map.html"
+    window.location.href = "map.html";
 }
 
 
