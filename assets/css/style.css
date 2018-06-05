@@ -510,3 +510,10 @@ label{
 .row{
     height : 100%;
 }
+.form-control{
+    opacity : .5;
+}
+#location, #searchInput {
+    background-color : white;
+    opacity : .5
+}
