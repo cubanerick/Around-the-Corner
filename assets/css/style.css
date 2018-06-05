@@ -17,6 +17,7 @@ img {
     text-align: center;
     font-size: 40px;
     font-family: 'Pacifico', cursive;
+    color : #aa3e03;
 
 }
 
@@ -496,7 +497,7 @@ a{
 label{
     background-color: black;
     color : white;
-    width : 300px;
+    width : 200px;
     height : 20px;
     opacity : 0.5;
     font-weight : bold;
@@ -507,13 +508,15 @@ label{
     display: inline-block;
 }
 
-.row{
+#mapContainer{
     height : 100%;
 }
-.form-control{
-    opacity : .5;
+#exampleFormControlSelect1{
+    opacity : .75;
+    text-align: center;
 }
 #location, #searchInput {
     background-color : white;
-    opacity : .5
+    opacity : .75;
+    text-align: center;
 }
