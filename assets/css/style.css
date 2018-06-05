@@ -1,41 +1,43 @@
 .infoWindowContainer {
-    height : 400px;
-    width : 600px;
+    height: 400px;
+    width: 600px;
 }
 
-.infoImage{
-    height : 200px;
-    width : 200px;
+.infoImage {
+    height: 200px;
+    width: 200px;
 }
 
 img {
-    height : 200px;
-    width : 200px;
+    height: 200px;
+    width: 200px;
 }
 
 #title {
     text-align: center;
-    font-size : 40px;
+    font-size: 40px;
 }
 
-.page-footer{
-    position : absolute;
-    bottom : 0;
+.page-footer {
+    position: absolute;
+    bottom: 0;
     height: 50%;
-    width :100%;
+    width: 100%;
 }
-.form-group{
-    position : relative;
+
+.form-group {
+    position: relative;
 }
 
 #loader {
-    display : block;
     display:none;
-    margin-left :  auto;
-    margin-right: auto;
-    width: 50%;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
 }
-#frontPageButton{
+
+#frontPageButton {
     text-decoration: none;
     display: inline-block;
     text-align: center;
