@@ -55,7 +55,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background:url('ass')
+    background-image : url('../Images/yooooooo.jpg')
 }
 
 .infoImage {
@@ -494,6 +494,7 @@ a{
 @media screen and (max-width: 600px) { 
 	.slideshow li div h3 { font-size: 50px }
 }
+/* changes search label opacity , color and background color */
 label{
     background-color: black;
     color : white;
@@ -502,12 +503,12 @@ label{
     opacity : 0.5;
     font-weight : bold;
 }
-
+/* give google map height of div height */
 #map{
     height : 100%;
     display: inline-block;
 }
-
+/* give google map div height */
 #mapContainer{
     height : 100%;
 }
@@ -515,8 +516,15 @@ label{
     opacity : .75;
     text-align: center;
 }
+
 #location, #searchInput {
     background-color : white;
     opacity : .75;
     text-align: center;
 }
+
+/* centers text in radius option select */
+select { 
+    text-align: center;
+    text-align-last: center;
+ }
