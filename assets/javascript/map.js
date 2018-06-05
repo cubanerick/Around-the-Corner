@@ -11,6 +11,7 @@ function initMap() {
             lat: parseFloat(jsonUserPosition[0]),
             lng: parseFloat(jsonUserPosition[1])
         };
+        console.log(userPosition)
     }
 
     var aP = localStorage.getItem("addressPosition");
@@ -20,11 +21,14 @@ function initMap() {
     //     lat: parseFloat(jsonUserPosition[0]),
     //     lng: parseFloat(jsonUserPosition[1])
     // };
+
     if (localStorage.getItem("userPosition") === "undefined") {
         var addressPosition = {
             lat: parseFloat(jsonaddressPosition[0]),
             lng: parseFloat(jsonaddressPosition[1])
+            
         }
+        console.log(addressPosition);
     }
 
     var usedposition = {};
@@ -35,7 +39,7 @@ function initMap() {
     }
 
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 4,
         center: usedposition,
     });
 
@@ -44,7 +48,7 @@ function initMap() {
     var coords = localStorage.getItem("locations");
     var json = JSON.parse(coords);
     var htmlText = localStorage.getItem("info");
-    var jsonEventData =JSON.parse(htmlText);
+    var jsonEventData = JSON.parse(htmlText);
 
     // function addmarker(coord) {
     //     marker = new google.maps.Marker({
@@ -61,7 +65,7 @@ function initMap() {
                 parseFloat(json[i][1])
             ),
             map: map,
-            
+
         });
 
         google.maps.event.addListener(addmarker, 'click', (function (addmarker, i) {
@@ -74,7 +78,7 @@ function initMap() {
     }
 }
 
-$(document).on('click','#searchPageButton', function() {
+$(document).on('click', '#searchPageButton', function () {
     window.location.href = 'index.html';
 })
 
@@ -83,9 +87,10 @@ function w3_open() {
     document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("openNav").style.display = 'none';
-  }
-  function w3_close() {
+}
+
+function w3_close() {
     document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
-  }
+}
