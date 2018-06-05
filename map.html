@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='assets/css/style.css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src='assets/javascript/map.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRKE7aBhitL_SkGByrFo-9V9ZVEiZW2io&callback=initMap"></script>
@@ -18,10 +18,16 @@
 </head>
 
 <body>
-    <div id='map'></div>
-</br>
     <div class='row'>
-        <button id='searchPageButton' type="button" class="btn btn-primary btn-lg">Click me to search for more events!</button>
+        <div class='col-md-8'>
+            <div id='map'></div>
+        </div>
+        <div class='col-md-4'>
+            <button id='searchPageButton' type="button" class="btn btn-primary btn-lg">Click me to search for more events!</button>
+        </div>
+    </div>
+
+
 </body>
 </div>
 
