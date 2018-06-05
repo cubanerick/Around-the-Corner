@@ -15,7 +15,6 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src='assets/javascript/map.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRKE7aBhitL_SkGByrFo-9V9ZVEiZW2io&callback=initMap"></script>
@@ -24,22 +23,23 @@
 
 <body>
     <div class='row'>
-        <div class='col-md-12' id = 'topBar'>
-                <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-                        <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-                        <a href="index.html" class="w3-bar-item w3-button"><i class="fas fa-home"></i>Home</a>
-                        <a href="#" class="w3-bar-item w3-button"></a>
-                        <a href="#" class="w3-bar-item w3-button"></a>
-                      </div>
-                      <button class="w3-button w3-white w3-xlarge" onclick="w3_open()">☰</button>
-                
-                      <div id = 'title'>
-                            <i class="fas fa-road"></i>Around the Corner
-                      </div>
+        <div class='col-md-12' id='topBar'>
+            <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+                <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+                <a href="index.html" class="w3-bar-item w3-button">
+                    <i class="fas fa-home"></i>Home</a>
+                <a href="#" class="w3-bar-item w3-button"></a>
+                <a href="#" class="w3-bar-item w3-button"></a>
+            </div>
+            <button class="w3-button w3-white w3-xlarge" onclick="w3_open()">☰</button>
+
+            <div id='title'>
+                <i class="fas fa-road"></i>Around the Corner
+            </div>
         </div>
     </div>
     <div id='mapContainer' class='row'>
-            <div id='map'></div>
+        <div id='map'></div>
     </div>
 
 
