@@ -20,7 +20,7 @@ function getInfo() {
     localStorage.clear
     var searchInput = $("#searchInput").val().trim();
     var location = $("#location").val().trim();
-    var radius = $("#radius").val();
+    var radius = $("#exampleFormControlSelect1").val().trim();
 
     var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
 
