@@ -28,10 +28,10 @@ function initMap() {
     }
 
     var usedposition = {};
-    if (localStorage.getItem("userPosition") === "undefined") {
-        usedposition = addressPosition;
-    } else {
+    if (localStorage.getItem("userPosition") !== "undefined") {
         usedposition = userPosition;
+    } else {
+        usedposition = addressPosition;
     }
 
     map = new google.maps.Map(document.getElementById('map'), {
