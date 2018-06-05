@@ -37,10 +37,8 @@ img {
     transform: translate(-50%, -50%); 
 }
 
-#frontPageButton {
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
+.btn-primary {
+    margin : auto;
 }
 #map {
     height: 90%;

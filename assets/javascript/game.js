@@ -35,7 +35,7 @@ function getInfo() {
 
         for (var i = 0; i < results.length; i++) {
             
-            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.html + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'><p><a href =" + response.events[i].url + "/>Event Info</p></div>");
+            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.html + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'><br><a href =" + response.events[i].url + "target='_blank'>Event Info</a></div>");
 
             localStorage.setItem('info', JSON.stringify(text));
             // text.push();
