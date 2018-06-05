@@ -20,14 +20,12 @@ function initMap() {
     //     lat: parseFloat(jsonUserPosition[0]),
     //     lng: parseFloat(jsonUserPosition[1])
     // };
-
-
-    // if (localStorage.getItem("userPosition") === "undefined" || (localStorage.getItem("userPosition") === "undefined" && localStorage.getItem("addressPosition") )) {
-        var addressPosition = {
-            lat: parseFloat(jsonaddressPosition[0]),
-            lng: parseFloat(jsonaddressPosition[1])
-        }
-    // }
+   
+    var addressPosition = {
+        lat: parseFloat(jsonaddressPosition[0]),
+        lng: parseFloat(jsonaddressPosition[1])
+    }
+   
 
     var usedposition = {};
     if (localStorage.getItem("userPosition") !== "undefined") {
