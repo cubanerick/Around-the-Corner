@@ -2,14 +2,44 @@ var map, marker;
 
 function initMap() {
 
-    var losAngeles = {
-        lat: 34.0522,
-        lng: -118.2437
-    };
+    var userPosition;
+    if (localStorage.getItem("userPosition") !== "undefined") {
+        var uP = localStorage.getItem("userPosition");
+        var jsonUserPosition = JSON.parse(uP);
+        // console.log(jsonUserPosition);
+        userPosition = {
+            lat: parseFloat(jsonUserPosition[0]),
+            lng: parseFloat(jsonUserPosition[1])
+        };
+    }
+
+    var aP = localStorage.getItem("addressPosition");
+    var jsonaddressPosition = JSON.parse(aP);
+
+    // var userPosition = {
+    //     lat: parseFloat(jsonUserPosition[0]),
+    //     lng: parseFloat(jsonUserPosition[1])
+    // };
+    if (localStorage.getItem("userPosition") === "undefined") {
+        var addressPosition = {
+            lat: parseFloat(jsonaddressPosition[0]),
+            lng: parseFloat(jsonaddressPosition[1])
+        }
+    }
+
+    var usedposition = {};
+    if (localStorage.getItem("userPosition") === "undefined") {
+        usedposition = addressPosition;
+    } else {
+        usedposition = userPosition;
+    }
+
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        center: losAngeles,
+        center: usedposition,
     });
+
+    // console.log(userPosition);
 
     var coords = localStorage.getItem("locations");
     var json = JSON.parse(coords);
@@ -19,7 +49,7 @@ function initMap() {
     // function addmarker(coord) {
     //     marker = new google.maps.Marker({
     //         position: coord,
-    //         map: map,
+    //         map: map,2
     //     });
     // }
     var infowindow = new google.maps.InfoWindow();

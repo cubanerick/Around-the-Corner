@@ -1,41 +1,69 @@
 var locations = [];
 var text = [] 
+var userPosition;
+var addressPosition;
+var geocode;
+var userPositionaddress;
+
+if(!localStorage.getItem("userPosition")) {
+    getGeolocation();
+};
 
 
 
 $(document).on("click", "#searchBtn", function () {
-    // event.preventDefault();
     getInfo();
     $('.container').hide();
     $('#loader').show();
+    localStorage.setItem("userPosition", JSON.stringify(userPosition));
     setTimeout(sendtoMap, 5000);
 });
 
+function getGeolocation() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        userPosition = [position.coords.latitude, position.coords.longitude]
+    });
+}
+
 function sendtoMap() {
-    window.location.href = "map.html"
+    window.location.href = "map.html";
 }
 
 
 function getInfo() {
     localStorage.clear
+
     var searchInput = $("#searchInput").val().trim();
-    var location = $("#location").val().trim();
+    var location = ($("#location").val().trim() || "undefined")
     var radius = $("#exampleFormControlSelect1").val().trim();
+    var locationlat = parseFloat(userPosition[0]);
+    var locationlng = parseFloat(userPosition[1]);
+    var queryURL;
 
-    var queryURL = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
+    var queryURL2 = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.latitude=" + locationlat + "&location.longitude=" + locationlng + "&location.within=" + radius;
+    
+    var queryURL1 = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
 
+        console.log(location)
+    if(location === "undefined"){
+        queryURL = queryURL2;
+    }else{
+        queryURL = queryURL1;
+    }
+    console.log(queryURL)
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
         console.log(response)
 
-
         var results = response.events;
-        console.log(results)
+
+        addressPosition = [parseFloat(response.location.latitude), parseFloat(response.location.longitude)];
+
         for (var i = 0; i < results.length; i++) {
             
-            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.html + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'><br><a href =" + response.events[i].url + "target='_blank'>Event Info</a></div>");
+            text.push("<div class='infoWindowContainer'><h1>" + response.events[i].name.text + "</h1><br><p>" + response.events[i].description.html + "</p><br><img class='infoImage' src='" + response.events[i].logo.original.url + "'><br><a href =" + response.events[i].url + " target='_blank'>Event Info</a></div>");
 
             localStorage.setItem('info', JSON.stringify(text));
             // text.push();
@@ -59,6 +87,7 @@ function getInfo() {
                 // locations.empty();
                 locations.push([parseFloat(latitude), parseFloat(longitude)]);
                 localStorage.setItem("locations", JSON.stringify(locations));
+                localStorage.setItem("addressPosition", JSON.stringify(addressPosition));
                 // localStorage.setItem("location" + i ,"{lat: " + latitude + ", lng: " + longitude + "}")
 
                 // locations.push(localStorage.getItem("location" + i))
@@ -68,6 +97,3 @@ function getInfo() {
         }
     });
 }
-
-
-
