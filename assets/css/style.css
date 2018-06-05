@@ -547,3 +547,35 @@ select {
 .w3-button{
     margin-bottom: 20px;
 }
+
+h3{
+	text-align: center;
+}
+
+.bigIcon {
+	font-size : 32px;
+}
+
+.contactSideBar {
+	color : #aa3e03
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background:rgb(235, 97, 18); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

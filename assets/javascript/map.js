@@ -20,18 +20,20 @@ function initMap() {
     //     lat: parseFloat(jsonUserPosition[0]),
     //     lng: parseFloat(jsonUserPosition[1])
     // };
-    if (localStorage.getItem("userPosition") === "undefined") {
+
+
+    // if (localStorage.getItem("userPosition") === "undefined" || (localStorage.getItem("userPosition") === "undefined" && localStorage.getItem("addressPosition") )) {
         var addressPosition = {
             lat: parseFloat(jsonaddressPosition[0]),
             lng: parseFloat(jsonaddressPosition[1])
         }
-    }
+    // }
 
     var usedposition = {};
     if (localStorage.getItem("userPosition") !== "undefined") {
-        usedposition = userPosition;
-    } else {
         usedposition = addressPosition;
+    } else if(localStorage.getItem("userPosition") === "undefined") {
+        usedposition = userPosition;
     }
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -74,13 +76,19 @@ function initMap() {
     }
 }
 
-$(document).on('click','#searchPageButton', function() {
+$(document).on('click', '#searchPageButton', function () {
     window.location.href = 'index.html';
 })
 
 function w3_open() {
+    document.getElementById("main").style.marginLeft = "25%";
+    document.getElementById("mySidebar").style.width = "25%";
     document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("openNav").style.display = 'none';
 }
+
 function w3_close() {
+    document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
 }

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head profile = "https://cubanerick.github.io/Project-1/">
+
+    <link rel="icon" 
+          type="image/png" 
+          href="assets/Images/road icon.PNG">
+  
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Map</title>
+    <title>Around the Corner</title>
 
     <link rel='stylesheet' href='assets/css/reset.css'>
     <link rel='stylesheet' href='assets/css/style.css'>
@@ -24,27 +29,44 @@
 <body>
     <div class='row'>
         <div class='col-md-12' id='topBar'>
-            <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-                <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+            <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+                <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
                 <a href="index.html" class="w3-bar-item w3-button">
-                    <i class="fas fa-home"></i>Home</a>
-                <a href="#" class="w3-bar-item w3-button"></a>
-                <a href="#" class="w3-bar-item w3-button"></a>
-            </div>
-            <button class="w3-button w3-white w3-xlarge" onclick="w3_open()">☰</button>
 
-            <div id='title'>
-                <i class="fas fa-road"></i>Around the Corner
+                    <i class="fas fa-home bigIcon"></i> Home</a>
+
+                <p>
+                    <h3 class='contactSideBar'>Contacts</h3>
+                </p>
+                <a href="#" class="w3-bar-item w3-button">
+                    <i class="fab fa-facebook-square bigIcon"></i>
+                    </i> Facebook</a>
+                <a href="#" class="w3-bar-item w3-button">
+                    <i class="fab fa-github-square bigIcon"></i> Github</a>
+                <a href="#" class="w3-bar-item w3-button ">
+                    <i class="fab fa-twitter-square bigIcon"></i>
+                    </i>
+                    </i> Twitter</a>
+                <a href="#" class="w3-bar-item w3-button ">
+                    <i class="fab fa-instagram bigIcon"></i>
+                    </i> Instagram</a>
+
+            </div>
+            <div id="main">
+                <div class="w3-white">
+                    <button id="openNav" class="w3-button w3-white w3-xlarge" onclick="w3_open()">&#9776;</button>
+                    <div id='title'>
+                        <i class="fas fa-road"></i>Around the Corner
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id='mapContainer' class='row'>
+    <div id='mapContainer'>
         <div id='map'></div>
     </div>
-
-
 </body>
-</div>
+
 
 
 </html>
