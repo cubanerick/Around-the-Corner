@@ -38,18 +38,19 @@ function getInfo() {
     var radius = $("#exampleFormControlSelect1").val().trim();
     var locationlat = parseFloat(userPosition[0]);
     var locationlng = parseFloat(userPosition[1]);
+    var queryURL;
 
-    if(location === "undefined"){
-        var queryURL = queryURL2;
-    }else{
-        var queryUrl = queryURL1;
-    }
-
-
-    var queryURL2 = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.latitude=" + locationlat + "&location.longitude" + locationlng + "&location.within=" + radius;
+    var queryURL2 = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.latitude=" + locationlat + "&location.longitude=" + locationlng + "&location.within=" + radius;
     
     var queryURL1 = "https://www.eventbriteapi.com/v3/events/search/?token=NFYIPZGRL3ENLJ7TMLZJ&q=" + searchInput + "&location.address=" + location + "&location.within=" + radius;
 
+        console.log(location)
+    if(location === "undefined"){
+        queryURL = queryURL2;
+    }else{
+        queryURL = queryURL1;
+    }
+    console.log(queryURL)
     $.ajax({
         url: queryURL,
         method: "GET"
