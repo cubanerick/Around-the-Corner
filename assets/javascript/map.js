@@ -20,12 +20,14 @@ function initMap() {
     //     lat: parseFloat(jsonUserPosition[0]),
     //     lng: parseFloat(jsonUserPosition[1])
     // };
-   
-    var addressPosition = {
-        lat: parseFloat(jsonaddressPosition[0]),
-        lng: parseFloat(jsonaddressPosition[1])
-    }
-   
+
+
+    // if (localStorage.getItem("userPosition") === "undefined" || (localStorage.getItem("userPosition") === "undefined" && localStorage.getItem("addressPosition") )) {
+        var addressPosition = {
+            lat: parseFloat(jsonaddressPosition[0]),
+            lng: parseFloat(jsonaddressPosition[1])
+        }
+    // }
 
     var usedposition = {};
     if (localStorage.getItem("userPosition") !== "undefined") {
@@ -75,8 +77,9 @@ function initMap() {
 }
 
 $(document).on('click', '#searchPageButton', function () {
-    window.location.href = 'index.html';
     localStorage.clear();
+
+    window.location.href = 'index.html';
 })
 
 function w3_open() {

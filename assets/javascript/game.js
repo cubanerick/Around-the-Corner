@@ -4,7 +4,13 @@ var userPosition;
 var addressPosition;
 var geocode;
 var userPositionaddress;
+localStorage.clear();
 
+function getGeolocation() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        userPosition = [position.coords.latitude, position.coords.longitude]
+    });
+}
 if(!localStorage.getItem("userPosition")) {
     getGeolocation();
 };
@@ -19,11 +25,7 @@ $(document).on("click", "#searchBtn", function () {
     setTimeout(sendtoMap, 5000);
 });
 
-function getGeolocation() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        userPosition = [position.coords.latitude, position.coords.longitude]
-    });
-}
+
 
 function sendtoMap() {
     window.location.href = "map.html";
@@ -31,7 +33,7 @@ function sendtoMap() {
 
 
 function getInfo() {
-    localStorage.clear
+    // localStorage.clear();
 
     var searchInput = $("#searchInput").val().trim();
     var location = ($("#location").val().trim() || "undefined")
@@ -97,3 +99,5 @@ function getInfo() {
         }
     });
 }
+
+
