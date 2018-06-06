@@ -31,7 +31,7 @@ function sendtoMap() {
 
 
 function getInfo() {
-    localStorage.clear
+    localStorage.clear();
 
     var searchInput = $("#searchInput").val().trim();
     var location = ($("#location").val().trim() || "undefined")

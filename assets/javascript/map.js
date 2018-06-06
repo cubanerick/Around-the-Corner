@@ -78,6 +78,7 @@ function initMap() {
 
 $(document).on('click', '#searchPageButton', function () {
     window.location.href = 'index.html';
+    localStorage.clear();
 })
 
 function w3_open() {
